@@ -38,8 +38,7 @@ p {
 }
 
 .middle-blurb {
-    margin-top: 100px;
-    margin-bottom: 100px;
+    padding: 30px 0;
     text-align: center;
     background-color: palegreen;
 }
