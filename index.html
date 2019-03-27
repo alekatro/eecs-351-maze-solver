@@ -245,7 +245,13 @@
             	<h3>Accomplishments and Challenges</h3>
             </div>
         	<div class="col-lg-12">
-        		<p>So far, we have successfully been able to autocrop mazes via edge detection, investigated and started to implement the Breadth First Search (BFS) solving algorithm, and have also investigated and started to implement the Watershed solving algorithm.  Throughout this process so far, we have run into a couple of challenges.  The first challenge is figuring out how to tailor our implementation to work with irregular mazes, such as circular mazes or hand-drawn mazes.  Another challenge is figuring out how to represent mazes in matrix form.  Within the next few weeks, we plan on continuing our research and strengthening our algorithms in order to overcome these hurdles. </p>
+				<p>Thus far, we have performed edge detection on our mazes, and used the result as a way to auto-crop our image to just include the maze, and no whitespace outside of it. A challenge we have faced is finding start and end points for our solver. We would like to automatically detect the start and end points of our maze, which we can attempt to find by taking the auto-cropped maze and finding open regions to begin and end from. 
+				<br>
+				<br> 
+				In terms of a solver, we initially explored MATLAB’s ‘watershed’ command as a solver, which we discuss later about tools we have learned from, but we determined that it would not be a robust solution since it requires that there is only one solution to the maze. To alleviate this we began to explore and implement other algorithms, such as a Breadth First Search as a way to find the shortest path from start to finish. Another difficulty we have faced is in the representation of our maze. If we use our image itself as a matrix, we can imagine the white pixels as valid locations for our algorithm to explore. This results in a large number of redundant locations to explore, as white pixels around the correct shortest path may also be considered. Currently, this should not pose a problem in the actual discovery of a solution, but will affect run time and scalability to larger problems. We have considered multiple image representations: a scaled down matrix where the width of each ‘wall’ and each ‘path’ is equal to 1, a graph-based representation of nodes and edges connecting them, as well as the image itself. 
+				<br>
+				<br> 
+				We found that one particular algorithm, A*, could be used directly on the image matrix to approximate the shortest path through a partially occluded region, and we plan to explore it in order to find a balance between efficient runtime and finding a suitable matrix representation. This discussion of the variable approaches to solve this problem brought up the concept of implementing multiple algorithms and comparing their performance, as well as using the visual nature of mazes and their solutions as a way to demonstrate different algorithms and their approach to solving problems.
         		<br>
         		<br>
         	</div>
@@ -353,3 +359,5 @@
     <!--<p><a class="btn btn-primary" href="#">More Stuff</a></p>-->
 
     <!--<img class="img-circle" src="http://lorempixel.com/100/100/people/2" alt="" width="100" height="100">-->
+
+    <!--<p>So far, we have successfully been able to autocrop mazes via edge detection, investigated and started to implement the Breadth First Search (BFS) solving algorithm, and have also investigated and started to implement the Watershed solving algorithm.  Throughout this process so far, we have run into a couple of challenges.  The first challenge is figuring out how to tailor our implementation to work with irregular mazes, such as circular mazes or hand-drawn mazes.  Another challenge is figuring out how to represent mazes in matrix form.  Within the next few weeks, we plan on continuing our research and strengthening our algorithms in order to overcome these hurdles. </p>-->
