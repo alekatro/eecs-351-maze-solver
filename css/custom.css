@@ -8,14 +8,16 @@ body {
 
 .black-box {
     width: 300px;
-    background-color: #777;
+    background-color: #333;
     border: 25px;
     padding: 25px;
     margin: 25px;
     margin: auto;
     width: 50%; 
     text-align: center;
-    color: black;
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .middle-blurb {
