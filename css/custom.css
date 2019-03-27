@@ -6,6 +6,21 @@ body {
     margin-bottom: 25px;
 }
 
+.middle-blurb {
+    adding: 30px 0;
+    text-align: center;
+    background-color: lightgreen;
+}
+
+.middle-blurb h3 {
+    color: darkgreen;
+    margin-top: 5px;
+}
+    
+.middle-blurb-item {
+    padding: 30px 0;
+}
+
 .footer-blurb {
     padding: 30px 0;
 	text-align: center;
