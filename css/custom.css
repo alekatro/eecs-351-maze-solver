@@ -2,6 +2,10 @@ body {
     padding-top: 50px; /* Padding for .navbar-fixed-top. Change value if navbar height changes. Remove if using .navbar-static-top. */
 }
 
+p {
+    margin-bottom: 0px;
+}
+
 .glyphicon.glyphicon-search {
     font-size: 75px;
 }
