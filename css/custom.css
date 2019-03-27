@@ -24,6 +24,7 @@ body {
     border: 25px;
     padding: 25px;
     margin: 25px;
+    margin: auto;
     width: 50%; 
     text-align: center;
     color: gainsboro;
