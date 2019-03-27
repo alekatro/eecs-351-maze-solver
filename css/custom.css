@@ -7,11 +7,11 @@ body {
 }
 
 .black-box {
-    width: 90px; 
-    height: 60px; 
+    margin: auto;
+    width: 50%; 
     background-color: #777; 
     text-align: center;
-    text-decoration-color: #FFFFFF;
+    color: white;
     padding: 10px;
 }
 
