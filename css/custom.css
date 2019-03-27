@@ -6,7 +6,18 @@ body {
     margin-bottom: 25px;
 }
 
+.black-box {
+    width: 90px; 
+    height: 60px; 
+    background-color: #777; 
+    text-align: center;
+    text-decoration-color: #FFFFFF;
+    padding: 10px;
+}
+
 .middle-blurb {
+    margin-top: 30px;
+    margin-bottom: 30px;
     text-align: center;
     background-color: lightgreen;
 }
