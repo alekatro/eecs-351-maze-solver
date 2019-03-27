@@ -7,12 +7,14 @@ body {
 }
 
 .black-box {
+    width: 300px solid gray;
+    border: 25px;
+    padding: 25px;
+    margin: 25px;
     margin: auto;
     width: 50%; 
-    background-color: #777; 
     text-align: center;
     color: white;
-    padding: 10px;
 }
 
 .middle-blurb {
