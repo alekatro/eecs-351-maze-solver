@@ -6,6 +6,14 @@ body {
     font-size: 100px;
 }
 
+.glyphicon.glyphicon-star {
+    font-size: 100px;
+}
+
+.glyphicon.glyphicon-random {
+    font-size: 100px;
+}
+
 .portfolio-item {
     margin-bottom: 25px;
 }
