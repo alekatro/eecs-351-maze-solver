@@ -17,6 +17,7 @@ body {
     text-align: center;
     color: #777;
     margin-bottom: 60px;
+    border-radius: 15px;
 }
 
 .middle-blurb {
