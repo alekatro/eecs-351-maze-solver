@@ -31,6 +31,14 @@ p {
     margin-bottom: 25px;
 }
 
+.lessons-learned {
+    display: table-cell;
+    height: 300px;
+    text-align: center;
+    width: 300px;
+    vertical-align: middle;
+}
+
 .black-box {
     width: 300px;
     background-color: #333333;
