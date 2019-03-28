@@ -22,10 +22,6 @@ p {
     margin-bottom: 25px;
 }
 
-.section-title {
-    border-bottom: 1px solid #eee;
-}
-
 .vertical-align {
     display: table-cell;
     width: 400px;
