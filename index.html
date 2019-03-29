@@ -290,7 +290,7 @@
             	<h3>Lessons Learned</h3>
             </div>
         	<div class="col-lg-12">
-        		<p> While researching maze solving techniques, we came across a unique approach implemented using the Watershed transform, a subsidiary of the Matlab Image processing Toolkit. This function utilizes the Fernand Meyer Algorithm to detect “catchment basins” or “watershed ridge lines” on an image1. The function creates basins based on continuous segments of an image. These basins are then translated to a matrix respective to the image size, where indices are numbered to indicate their matching basin.
+        		<p> While researching maze solving techniques, we came across a unique approach implemented using the Watershed transform, a subsidiary of the Matlab Image processing Toolkit. This function utilizes the Fernand Meyer Algorithm to detect “catchment basins” or “watershed ridge lines” on an image<sup>1</sup>. The function creates basins based on continuous segments of an image. These basins are then translated to a matrix respective to the image size, where indices are numbered to indicate their matching basin.
         		<br>
         		<br>
         		This is extremely useful for solving a maze since the start and end of a maze are always connected by continuous white space. Using the Watershed transform, we can highlight a path connecting the start and end of the maze by dividing the image into key basins and dead-end basins. An example of this is highlighted below.
