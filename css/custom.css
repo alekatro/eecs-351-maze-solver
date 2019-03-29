@@ -32,9 +32,16 @@ p {
 }
 
 .lessons-learned {
-    margin-left: auto;
-    margin-right: auto;
+    width: 300px;
+    border: 25px;
+    padding: 20px;
+    margin: 25px;
+    margin: auto;
+    width: 50%; 
     text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 15px;
 }
 
 .black-box {
