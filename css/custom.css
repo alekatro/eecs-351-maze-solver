@@ -9,6 +9,9 @@ p {
 .title-image {
   height: 500px;
   width: 100%;
+  text-align: center;
+  color: white;
+  position: relative;
 }
 
 .title-text {
