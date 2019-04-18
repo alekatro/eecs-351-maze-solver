@@ -6,14 +6,9 @@ p {
     margin-bottom: 0px;
 }
 
-.maze-image {
-  background-image: url("pictures/maze_background.jpg");
-  background-color: #cccccc;
+.title-image {
   height: 500px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+  width: 100%;
 }
 
 .title-text {
