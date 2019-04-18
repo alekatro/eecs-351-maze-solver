@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>EECS 351 Project</title>
+    <title>EECS 351 Project - Progress Report</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -37,40 +37,28 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a class="navbar-brand" href="#">
+                    <span class="glyphicon glyphicon-signal"></span> 
+                    EECS 351
+                </a>
             </div>
             <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a class="navbar-brand" href="#">
-                            <span class="glyphicon glyphicon-signal"></span> 
-                        EECS 351
-                        </a>
-                    </li>
-                    <li class>
-                        <a href="#bfs">Image Processing</a>
-                    </li>
-                    <li class>
-                        <a href="#bfs">Image Compression</a>
-                    </li>
-                    <li class>
-                        <a href="#bfs">BFS Algorithm</a>
-                    </li>
-                    <li class>
-                        <a href="#watershed">Watershed Algorithm</a>
-                    </li>
-                    <li class>
-                        <a href="#a_star">A* Algorithm</a>
+                    <li>
+                        <a href="#">Lecture Material</a>
                     </li>
                     <li>
-                        <a href="#contact">Contact</a>
+                        <a href="#">Assignments</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">Project</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class>
-                        <a href="progress_report.html">Progress Report</a>
+                    <li>
+                        <a href="#">Contact</a>
                     </li>
-
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -86,164 +74,17 @@
     <!--------------------------------------------------------------- Title Heading ---------------------------------------------------------------->
     <div class="container">
         <div class="row">
-            <div class = "col=lg-12 title-image">
-                <img src="pictures/maze_background.jpg" alt="">
-                <div class="title-text">The Maze Solver</div>
+            <div class="col-lg-12">
+                <h1 class="page-header">The Maze Solver
+                    <small>David Kucher, Nathan Peterson, Lexi Roberts</small>
+                </h1>
             </div>
         </div>
         <br>
     </div>
     <!---------------------------------------------------------------------------------------------------------------------------------------------->
 
-
-
-
-
-    <!-------------------------------------------------------------- Intro Paragraph --------------------------------------------------------------->
-    <div class="container">
-        <div class="black-box">
-                <p>The goal of this project is to <b>allow users to take a picture of a 2-dimensional maze and utilize our program to solve it.</b>  Our "maze solver" application performs edge/line detection on a picture of a maze, uses an algorithm to find the critical path for the maze, and returns a completed picture of the maze and its critical path.  Our webpage explains our "maze solver" in greater detail and introduces the effects of various algorithms on the process of solving mazes with our program.</p>
-        </div>
-        <div class="col-lg-12">
-        </div>
-    </div>
-    <!---------------------------------------------------------------------------------------------------------------------------------------------->
-
-
-
-
-
-    <!----------------------------------------------------------------- Pictures ------------------------------------------------------------------->
-    <div class="container">
-        <!-- Row 1 -->
-        <div class="row">
-            <div class ="col-md-4">
-                <br>
-                <h3><u>Original Mazes</u></h3>
-                <br>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <div class="vertical-align">
-                        <img class="img-responsive" style="border:1px dashed orangered" src="pictures/maze2.png" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <div class="vertical-align">
-                        <img class="img-responsive" style="border:1px dashed orangered" src="pictures/maze5.gif" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <div class="vertical-align">
-                        <img class="img-responsive" style="border:1px dashed orangered" src="pictures/maze3.jpg" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class ="col-lg-12">
-                <p><b>The three maze images that we chose to work with. Each image is outlined so that you can better see the size of the entire picture. To start out, we decided to keep the shape (square) and the colors (black and white) of each maze consistent.</b>
-                <br>
-                <i><b>Image 1 (left):</i></b> Created in PowerPoint by Nathan Peterson
-                <br>
-                <i><b>Image 2 (middle):</i></b> https://www.pinterest.com/pin/555068722796820086/?lp=true
-                <br>
-                <i><b>Image 3 (right):</i></b> https://www.microsoft.com/en-us/p/amazing-mazes/9wzdncrdgg68?activetab=pivot:overviewtab
-                </p>
-                <br>
-                <br>
-                <br>
-                <br>
-            </div>
-        </div>
-        <!-- /Row 1 -->
-
-        <!-- Row 2 -->
-        <div class="row">
-            <div class ="col-md-4">
-                <h3><u>Edges of Mazes</u></h3>
-                <br>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <div class="vertical-align">
-                        <img class="img-responsive" src="pictures/Edges2.png" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <div class="vertical-align">
-                        <img class="img-responsive" src="pictures/edges5.png" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <div class="vertical-align">
-                        <img class="img-responsive" src="pictures/Edges3.png" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class ="col-lg-12">
-                <p><b>Images of each maze after being filtered by an edge detection feature in MatLab.</b></p>
-                <br>
-                <br>
-                <br>
-                <br>
-            </div>
-        </div>
-        <!-- /Row 2 -->
-
-        <!-- Row 3 -->
-        <div class="row">
-            <div class ="col-md-4">
-                <h3><u>Autocropped Mazes</u></h3>
-                <br>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <div class="vertical-align">
-                        <img class="img-responsive" style="border:1px dashed orangered" src="pictures/autoCropped_maze2.png" alt="maze 1">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <div class="vertical-align">
-                        <img class="img-responsive" style="border:1px dashed orangered" src="pictures/autoCropped_maze5.png" alt="maze 3">
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 portfolio-item">
-                <a href="#">
-                    <div class="vertical-align">
-                        <img class="img-responsive" style="border:1px dashed orangered" src="pictures/autoCropped_maze3.png" alt="maze 3">
-                    </div>
-                </a>
-            </div>
-            <div class ="col-lg-12">
-                <p><b>Pictures of each maze after being autocropped through our written application in MatLab. Each image is outlined so that you can better see the size of the entire, cropped picture.</p></b>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-            </div>
-            <!-- /Row 3 -->
-        </div>
-    </div>
-    <!---------------------------------------------------------------------------------------------------------------------------------------------->
-
-
+    
 
 
 
@@ -301,7 +142,6 @@
                 <h3>Lessons Learned</h3>
             </div>
             <div class="col-lg-12">
-                <a name="bfs"></a>
                 <p> While researching maze solving techniques, we came across a unique approach implemented using the Watershed transform, a subsidiary of the Matlab Image processing Toolkit. This function utilizes the Fernand Meyer Algorithm to detect “catchment basins” or “watershed ridge lines” on an image<sup>1</sup>. The function creates basins based on continuous segments of an image. These basins are then translated to a matrix respective to the image size, where indices are numbered to indicate their matching basin.
                 <br>
                 <br>
@@ -414,55 +254,3 @@
 </body>
 
 </html>
-
-
-
-
-
-<!-- Pagination -->
-        <!--<div class="row text-center">
-            <div class="col-lg-12">
-                <ul class="pagination">
-                    <li>
-                        <a href="#">&laquo;</a>
-                    </li>
-                    <li class="active">
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">&raquo;</a>
-                    </li>
-                </ul>
-            </div>
-        </div>-->
-        <!-- /.row -->
-    <!-- /.container -->
-
-
-    <!--<p><a class="btn btn-primary" href="#">More Stuff</a></p>-->
-
-    <!--<img class="img-circle" src="http://lorempixel.com/100/100/people/2" alt="" width="100" height="100">-->
-
-    <!--<p>So far, we have successfully been able to autocrop mazes via edge detection, investigated and started to implement the Breadth First Search (BFS) solving algorithm, and have also investigated and started to implement the Watershed solving algorithm.  Throughout this process so far, we have run into a couple of challenges.  The first challenge is figuring out how to tailor our implementation to work with irregular mazes, such as circular mazes or hand-drawn mazes.  Another challenge is figuring out how to represent mazes in matrix form.  Within the next few weeks, we plan on continuing our research and strengthening our algorithms in order to overcome these hurdles. </p>-->
-
-
-    <!-- Pictures
-        <img class="img-responsive" src="http://lorempixel.com/700/400/nature/2" alt="">
-        <img class="img-responsive" src="http://lorempixel.com/700/400/nature/1" alt="">
-        <img class="img-responsive" src="http://lorempixel.com/700/400/nature/3" alt="">
-        <img class="img-responsive" src="http://lorempixel.com/700/400/nature/4" alt="">
-        <img class="img-responsive" src="http://lorempixel.com/700/400/nature/5" alt="">
-        <img class="img-responsive" src="http://lorempixel.com/700/400/nature/6" alt="">
-    -->
