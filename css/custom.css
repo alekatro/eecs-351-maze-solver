@@ -11,7 +11,6 @@ p {
   width: 100%;
   text-align: center;
   color: white;
-  position: relative;
 }
 
 .title-text {
@@ -21,6 +20,7 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;
+  font-size: 100px;
 }
 
 .glyphicon.glyphicon-search {
