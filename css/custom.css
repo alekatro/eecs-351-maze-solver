@@ -9,12 +9,13 @@ p {
 .title-image {
   height: 500px;
   width: 100%;
-  text-align: center;
   color: white;
 }
 
 .title-text {
   text-align: center;
+  top: 50%;
+  left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
   color: black;
