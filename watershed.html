@@ -96,7 +96,7 @@
                 <h3>Introduction</h3>
             </div>
             <div class="col-lg-12">
-                <p> The watershed transform is a subsidiary of the Matlab Image processing Toolkit, and the function utilizes the Fernand Meyer Algorithm to detect “catchment basins” or “watershed ridge lines” on an image<sup>1</sup>. The watershed algorithm finds a solution path by creating catchment basins based on continuous segments of an image. These basins divide the start and end of the maze. They are then translated to a matrix respective to the image size, where indices are numbered to indicate their matching basin. Once the algorithm is completed, a solution path will be revealed on the image, but this chosen solution will not necessarily be an ideal or minimal path if multiple solutions exist.
+                <p> The watershed transform is a subsidiary of the Matlab Image processing Toolkit, and the function utilizes the Fernand Meyer Algorithm to detect “catchment basins” or “watershed ridge lines” on an image<sup>1</sup>. The watershed algorithm finds a solution path by creating catchment basins based on continuous segments of an image. These basins divide the start and end of the maze. They are then translated to a matrix respective to the image size, where indices are numbered to indicate their matching basin. Once the algorithm is completed, a solution path is revealed on the image, but this chosen solution will not necessarily be an ideal or minimal path if multiple solutions exist.
                 <br>
                 <br>
                 This algorithm is extremely useful for solving a maze since the start and end of a maze are always connected by continuous white space. Using the Watershed transform, we can highlight a path connecting the start and end of the maze by dividing the image into key basins and dead-end basins. An example of this is highlighted below.
@@ -114,7 +114,7 @@
                     </div>
                 </div>
                 <br>
-                <p>Now that the image cleaned, we can perform our first watershed transformation. This generates a matrix of 0’s (whitespace), 1’s (basin 1), and 2’s (basin 2) that highlights the continuous solution area of the maze. Masking this with the original image indicates the solution area and the dead-end area (blacked out). 
+                <p>Now that the image has been cleaned, we can perform our first watershed transformation. This generates a matrix of 0’s (whitespace), 1’s (basin 1), and 2’s (basin 2) that highlights the continuous solution area of the maze. Masking this with the original image indicates the solution area and the dead-end area (blacked out). 
                 <br>
                 <br>
                 <div class="row centered">
@@ -127,7 +127,7 @@
                     </div>
                 </div>
                 <br>
-                <p>Taking one final watershed of the masked image will return another basin matrix with a refined solution segment. By performing an imshowpair in matlab with the first watershed and the final watershed highlights the solution path of the maze.
+                <p>Taking one final watershed of the masked image returns another basin matrix with a refined solution segment. By performing an <i>imshowpair</i> in Matlab on the first watershed and the final watershed, we now have a highlighted solution path for the maze.
                 <br>
                 <br>
                 <div class="row centered">
@@ -140,7 +140,7 @@
                     </div>
                 </div>
                 <br>
-                <p>We can isolate this solution by simply subtracting the watershed 1 basin from the refined basin. Overlaying this path back on our original image reveals a solution to the maze.
+                <p>We can isolate this solution by simply subtracting the first watershed basin from the refined basin. Overlaying this path back on our original image reveals a solution to the maze.
                 <br>
                 <br>
                 <div class="row centered">
@@ -153,7 +153,7 @@
                     </div>
                 </div>
                 <br>
-                <p>Watershed is an effective and fast method for finding a solution to a filtered maze, but doesn’t come without limitations. For one, watershed may not always find the optimal solution if there are multiple ways to solve a maze. It would instead indicate the most traversed path to reach the maze exit. We will explore additional solutions to this problem by implementing several ways to solve a maze. Our next step is to incorporate a flood-fill BFS algorithm to find the shortest path solution. Over the next week we will develop and integrate this solution on a series of mazes and try to extend its functionality to non-linear mazes.
+                <p>Watershed is an effective and fast method for finding a solution to a filtered maze, but the algorithm doesn’t come without a limitation. The issue with the watershed transform is that it may not always find the optimal solution if there are multiple ways to solve a maze. The algorithm would instead indicate the most traversed path to reach the maze exit. We believe that this algorithm is very strong and efficient, though, and that's why we have included it in our project analysis.
                 <br>
                 <br>
                 <p>1. https://www.mathworks.com/help/images/ref/watershed.html</p>
