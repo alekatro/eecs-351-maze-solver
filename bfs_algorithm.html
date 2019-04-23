@@ -125,7 +125,8 @@
                 To properly implement the BFS, pixels were individually serviced and marked with a weight, then surrounding pixels (up, down, right, and left) were added to a queue with an accumulating weight attached. This strategy for solving allows multiple paths to be serviced simultaneously if there is ever a point in the maze where paths diverge. Once there are no more pixels in the queue unvisited, or a pixel in the queue has the same coordinates as the end position, the algorithm will break and return the weighted flood of the image. From here a simple back-tracing algorithm is implemented starting at the end pixel – A path is highlighted with the lowest valued pixels touching one another until a lowest weight point is reached (this is always the start). 
                 <br>
                 <br>
-                The maze below on the left is from the original maze that we used FINISH. The maze in the middle is the line expansion FINISH. The maze on the right is the shortest pathFINISH.
+                The maze below on the left is from the original maze that we used FINISH. The maze in the middle is the line expansion FINISH. The maze on the right is the shortest path FINISH.
+                <br>
                 <br>
                 <br>
                 </p>
@@ -165,7 +166,9 @@
                         <img class="img-responsive center-block" src="pictures/original.gif" alt="" height="300" width="300">
                     </div>
                     <div class ="col-md-4">
-                        <img class="img-responsive center-block" src="pictures/smallMaze.gif" alt="" height="200" width="200">
+                        <div class="vertical-align">
+                            <img class="img-responsive center-block" src="pictures/smallMaze.gif" alt="" height="200" width="200">
+                        </div>
                     </div>
                     <div class ="col-md-4">
                         <img class="img-responsive center-block" src="pictures/thick.gif" alt="" height="300" width="300">
