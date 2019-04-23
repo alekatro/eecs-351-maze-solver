@@ -102,6 +102,7 @@
                 Although there are many ways to calculate the heuristic within an A<sup>*</sup> search, the equation we chose to use is known as the "Diagonal Distance." We chose this equation because it accounts for diagonal movement, which we allowed in our algorithm. The equation for <i>H</i> is as follows:
                 <br>
                 <br>
+                <br>
 
                 <div class="row centered">
                     <div class="col-md-3">
@@ -113,6 +114,7 @@
                     <div class="col-md-3">
                     </div>
                 </div>
+                <br>
                 <br>
                 In the above equation, the function calculates the heuristic for one <i>node</i>, or pixel. <i>node.x</i> represents the column that the current pixel sits in, while <i>goal.x</i> represents the column that the end pixel lies in. Likewise, <i>node.y</i> and <i>goal.y</i> represent the rows in which both the current pixel and the end pixel are located. The variable <i>D</i> represents the cost of moving horizontally or vertically, while the variable <i>D2</i> represents the cost of moving diagonally.  To keep things simple, we set both <i>D</i> and <i>D2</i> equal to 1, which is known as the "Chebyshev Distance."</p>
             </div>
@@ -160,7 +162,9 @@
             <div class="col-lg-12">
                 <p> 
                 Once we had implemented the GIF generation with the BFS algoirthm, we wanted to do the same with the A<sup>*</sup> search algorithm.  Although we were only able to test this GIF generation with one maze (due to time), we were successful in doing so. As mentioned below, the GIF runs fairly slowly because the algorithm that we wrote was not fully optimized.  This GIF could be sped up in the future with a more efficient implementation of the A<sup>*</sup> search algorithm.
-                <br><br>
+                <br>
+                <br>
+                <br>
                 </p>
 
                 <div class="row centered">
