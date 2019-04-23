@@ -84,43 +84,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">The Maze Solver
-                    <small>David Kucher, Nathan Peterson, Lexi Roberts</small>
-                </h1>
+                <h1 class="page-header">BFS Algorithm</h1>
             </div>
         </div>
-        <br>
     </div>
     <!---------------------------------------------------------------------------------------------------------------------------------------------->
-
-
-
-
-
-    <!--------------------------------------------------------------- Middle Green Blurb ---------------------------------------------------------------->
-    <footer>
-        <div class="middle-blurb">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4 middle-blurb-item">
-                        <h3>Watershed Transformation</h3>
-                        <p>This transformation finds a solution path by creating catchment basins dividing the start and end of the maze. This will reveal a solution path on the image, but will not necessarily be an ideal or minimal path if multiple solutions exist. </p>
-                    </div>
-                    <div class="col-sm-4 middle-blurb-item">
-                        <h3>BFS Algorithm</h3>
-                        <p>The Breadth First Search (BFS) algorithm will effectively solve a maze by flooding white-space until every pixel in the maze is connected. This will require the transformation of the image into a graph of nodes and a minimum path algorithm to solve the maze once it is connected. This method will always reveal the best solution to a maze if multiple solution paths exist.</p>
-                    </div>
-                    <div class="col-sm-4 middle-blurb-item">
-                        <h3>A* Search Algorithm</h3>
-                        <p>This is an algorithm that we plan to investigate and implement more in the next few weeks, and we believe will be able to solve mazes.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-------------------------------------------------------------------------------------------------------------------------------------------------->
-
-
 
 
 
@@ -128,123 +96,140 @@
     <div class="container">
         <div class="row">
             <div class ="col-md-6">
-                <br>
-                <br>
-                <br>
-                <br>
-                <h3>Accomplishments and Challenges</h3>
+                <h3>Introduction</h3>
             </div>
             <div class="col-lg-12">
-                <p>Thus far, we have performed edge detection on our mazes, and used the result as a way to auto-crop our image to just include the maze, and no whitespace outside of it. A challenge we have faced is finding start and end points for our solver. We would like to automatically detect the start and end points of our maze, which we can attempt to find by taking the auto-cropped maze and finding open regions to begin and end from. 
-                <br>
-                <br> 
-                In terms of a solver, we initially explored MATLAB’s ‘watershed’ command as a solver, which we discuss later about tools we have learned from, but we determined that it would not be a robust solution since it requires that there is only one solution to the maze. To alleviate this we began to explore and implement other algorithms, such as a Breadth First Search as a way to find the shortest path from start to finish. Another difficulty we have faced is in the representation of our maze. If we use our image itself as a matrix, we can imagine the white pixels as valid locations for our algorithm to explore. This results in a large number of redundant locations to explore, as white pixels around the correct shortest path may also be considered. Currently, this should not pose a problem in the actual discovery of a solution, but will affect run time and scalability to larger problems. We have considered multiple image representations: a scaled down matrix where the width of each ‘wall’ and each ‘path’ is equal to 1, a graph-based representation of nodes and edges connecting them, as well as the image itself. 
-                <br>
-                <br> 
-                We found that one particular algorithm, A*, could be used directly on the image matrix to approximate the shortest path through a partially occluded region, and we plan to explore it in order to find a balance between efficient runtime and finding a suitable matrix representation. This discussion of the variable approaches to solve this problem brought up the concept of implementing multiple algorithms and comparing their performance, as well as using the visual nature of mazes and their solutions as a way to demonstrate different algorithms and their approach to solving problems.
-                <br>
-                <br>
+                <p>The Breadth First Search (BFS) algorithm with effectively solve the maze by flooding white-space until every pixel in the maze is connected. This will require the transformation of the image into a graph of nodes and a minimum path algorithm to solve the maze once it is connected. This method will always reveal the best solution to the maze if multiple solution paths exist.
+                </p>
+                
+                <div class="col-md-6">
+                    <img class="img-responsive center-block" src="pictures/maze3.jpg" alt="Original Maze">
+                </div>
+                <div class="col-md-6">
+                    <img class="img-responsive center-block" src="pictures/Edges3.png" alt="Compressed Maze">
+                </div>
+                
+                <p>
+                We found that this effectively discovered borders, however when cropping the image based on these edge-detection outputs, we found inconsistencies, where sometimes a border could get cut off if it was too small, or a white border of pixels would be left in the image. Instead of performing this edge detection, we decided to pursue a simpler route of using the maze representation to our advantage. By thresholding the image, we were performing a sort of edge detection, and there was a line at which the whitespace stopped and the maze began, so we simply detected this on all four sides and cropped the image accordingly. This resulted in the following cropped maze.
+                </p>
+                
+                <div class="row centered">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/autoCropped_maze3.png" alt="">
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+                
             </div>
             <div class ="col-md-6">
                 <br>
                 <br>
-                <h3>Lessons Learned</h3>
+                <br>
+                <br>
+                <h3>Algorithm Implementation</h3>
             </div>
             <div class="col-lg-12">
-                <p> While researching maze solving techniques, we came across a unique approach implemented using the Watershed transform, a subsidiary of the Matlab Image processing Toolkit. This function utilizes the Fernand Meyer Algorithm to detect “catchment basins” or “watershed ridge lines” on an image<sup>1</sup>. The function creates basins based on continuous segments of an image. These basins are then translated to a matrix respective to the image size, where indices are numbered to indicate their matching basin.
-                <br>
-                <br>
-                This is extremely useful for solving a maze since the start and end of a maze are always connected by continuous white space. Using the Watershed transform, we can highlight a path connecting the start and end of the maze by dividing the image into key basins and dead-end basins. An example of this is highlighted below.
-                <br>
-                <br>
-                To ensure the watershed transform creates only two distinct basins for the image, we first clean the image by filtering out low energy pixels to obtain a 2 colored, black and white image.
+                <p>Our BFS algorithm was designed to work on any purely black and white images. This function was written in Matlab with java elements imported to use linked list nodes as a means of a queue-based data structure. The BFS algorithm worked by taking in 3 required inputs (start position, end position, and the maze image) and 2 optional parameters for gif generation. The start and end positions of the image were determined during pre-processing and stored in 2x1 coordinate vectors. 
+                <br><br>
+                The algorithm begins by ‘flooding’ the whitespace of the image with weighted values, starting at the start coordinate of the maze. To properly implement the BFS, pixels were individually serviced and marked with a weight, then surrounding pixels (up, down, right, and left) were added to a queue with an accumulating weight attached. This strategy for solving allows multiple paths to be serviced simultaneously if there is ever a point in the maze where paths diverge. Once there are no more pixels in the queue unvisited, or a pixel in the queue has the same coordinates as the end position, the algorithm will break and return the weighted flood of the image. From here a simple back-tracing algorithm is implemented starting at the end pixel – A path is highlighted with the lowest valued pixels touching one another until a lowest weight point is reached (this is always the start). Flood fill BFS is an effective strategy for finding the shortest path in a matrix mapped image. Although by nature its solving strategy may take a little longer than other methods, such as adjacency matrices, it is a great approach for solving non-linear mazes and always finding the shortest path possible if multiple solution paths exist.
                 </p>
-                <br>
-                <br>
-                <div class="portfolio-item">
-                    <a href="#">
-                        <div class="lessons-learned">
-                            <img class="img-responsive" src="pictures/original_cleaned_image.png" alt="" height="700" width="700">
-                        </div>
-                    </a>
+                <div class="row centered">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/HoughTransform.png" alt="" height="300" width="300">
+                            </div>
+                    <div class="col-md-3">
+                    </div>
                 </div>
-                <br>
-                <p>Now that the image cleaned, we can perform our first watershed transformation. This generates a matrix of 0’s (whitespace), 1’s (basin 1), and 2’s (basin 2) that highlights the continuous solution area of the maze. Masking this with the original image indicates the solution area and the dead-end area (blacked out). 
-                <br>
-                <br>
-                <div class="portfolio-item">
-                    <a href="#">
-                        <div class="lessons-learned">
-                            <img class="img-responsive" src="pictures/watershed1.png" alt="" height="700" width="700">
-                        </div>
-                    </a>
+                
+                <p>
+                Alternatively, we though of using convolution to 'expand' the borders and thereby thin out the white passageways. This worked reasonably well, and could be perormed with a kernel that was proportional to the size of the passageways in order to make sure that no information would be lost. An example of this output is shown below. However, this still left a relatively large number of non-necessary nodes to check in a search algorithm, so a better solution was still desired.
+                </p>
+                
+                <div class="row centered">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/thickMaze.png" alt="">
+                            </div>
+                    <div class="col-md-3">
+                    </div>
                 </div>
-                <br>
-                <p>Taking one final watershed of the masked image will return another basin matrix with a refined solution segment. By performing an imshowpair in matlab with the first watershed and the final watershed highlights the solution path of the maze.
-                <br>
-                <br>
-                <div class="col-lg-12 portfolio-item">
-                    <a href="#">
-                        <div class="lessons-learned">
-                            <img class="img-responsive" src="pictures/watershed2.png" alt="">
-                        </div>
-                    </a>
+                
+                <p>
+                <br><br>
+                Finally, we had the thought of exploiting the well-formatted nature of these mazes. We saw that the maze walls had a fixed width/height, and these squares were extended to form lines on the maze. Thus, we wanted to use a convolution in both directions with a vector, which would illustrate where the vertical and horizontal 'gridlines' of the image were. The vertical and horizontal convolutions are seen superimposed and thresholded in the image below.
+                </p>
+                <div class="row centered">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/gridlines.png" alt="">
+                            </div>
+                    <div class="col-md-3">
+                    </div>
                 </div>
-                <br>
-                <p>We can isolate this solution by simply subtracting the watershed 1 basin from the refined basin. Overlaying this path back on our original image reveals a solution to the maze.
-                <br>
-                <br>
-                <div class="portfolio-item">
-                    <a href="#">
-                        <div class="lessons-learned">
-                            <img class="img-responsive" src="pictures/watershed3.png" alt="">
-                        </div>
-                    </a>
+                
+                <p>
+                The gridlines contained the characteristic block of whitespace that was used in the maze, and the 'missing' lines are due to a lack of large wall in the area. After outputting this, we could calculate the mode of the width and height of each of these squares, and thus know the exact size of the characteristic whitespace. Then we could convolve the complement of the image with a kernel that was half the size of this whitespace in each dimension which would 'expand' the border to occupy the area where the whitespace resides. Then, we thresholded the resulting output such that if there was any non-zero response, it would be set to 255. By doing this, and knowning the width of the white space, we could sample the image of the maze to take pixels at a distance of the width of this whitespace apart to obtain an image that was approximately the best possible compression. This resulted in the both the borders and the whitespace being either 1 or 2 pixels wide, depending on the exact sampling frequency and the specific pattern at that particular location in the maze. This was very successful at compressing the maze, and resulted in very small outputs across all the sample mazes we tried. In this case, the autocropped maze dimensions, without compression, was 310x310, and the compressed version is 59x59, which is approximately 4% of the original size. The compressed image is seen below, and is upsampled for visibility. The actual compression will vary from maze to maze, depending on how large the borders and whitespace are, respectively. However, this approach should be applicable to all well-formatted mazes, in which the wall and white space size are consistent and form a rectangular 'grid' of squares. Further work could be done to get this approximation into the perfectly compressed maze using a combination of several techniques.
+                </p>
+                
+                <div class="row centered">
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/maxCompression.png" alt="">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/maxCompression_upsampled.png" alt="" width="300">
+                    </div>
                 </div>
-                <br>
-                <p>Watershed is an effective and fast method for finding a solution to a filtered maze, but doesn’t come without limitations. For one, watershed may not always find the optimal solution if there are multiple ways to solve a maze. It would instead indicate the most traversed path to reach the maze exit. We will explore additional solutions to this problem by implementing several ways to solve a maze. Our next step is to incorporate a flood-fill BFS algorithm to find the shortest path solution. Over the next week we will develop and integrate this solution on a series of mazes and try to extend its functionality to non-linear mazes.
-                <br>
-                <br>
-                <p>1. https://www.mathworks.com/help/images/ref/watershed.html</p>
+                
+            </div>
+            <div class ="col-md-6">
                 <br>
                 <br>
+                <h3>Part 3: Automatic Start/End Detection</h3>
+            </div>
+            <div class="col-lg-12">
+                <p> Now with a minimal representation of the maze, we can automate our processing by detecting the start and stop of the maze. We can take advantage of the fact that the outside of the image will always be black borders, apart from the start and stop of the maze. Thus, we can simply search for the start and stop, which can be the starting point for our search algorithms to solve the maze.
+                <br><br>
+                </p>
+            </div>
+            <div class ="col-md-6">
                 <br>
                 <br>
+                <br>
+                <br>
+                <h3>Summary</h3>
+            </div>
+            
+            <div class="col-lg-12">
+                <!--<div class="col-lg-12">-->
+                <p> We created an image pipeline that could take an input image, as seen on the left, and convert it into an output image, as seen on the right. However, for the sake of visibility in the discussion of the algorithms, we will be using the larger versions of the maze. The complexity of computations would be significantly be reduced using this approach, however.
+                </p>
+                <div class="row centered">
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/maze3.jpg" alt="Original Maze">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/maxCompression_upsampled.png" alt="Compressed Maze" width="300">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <!-------------------------------------------------------------------------------------------------------------------------------------------------->
-
-
-
-
-
+    
+    
+    
+    
+    
     <!------------------------------------------------------------------ Page Footer ------------------------------------------------------------------->
+    
     <footer>
-        <div class="footer-blurb">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4 footer-blurb-item">
-                        <span class="glyphicon glyphicon-search"></span> 
-                        <h3>Task 1</h3>
-                        <p>Create a <b>solver that finds a path from start and end coordinates</b> and eventually figure out a way for our program to automatically discover the start and end coordinates itself.</p>
-                    </div>
-                    <div class="col-sm-4 footer-blurb-item">
-                        <span class="glyphicon glyphicon-star"></span> 
-                        <h3>Task 2</h3>
-                        <p>Investigate and implement the <b>A<sup>*</sup> Search Algorithm</b> and figure out how to program this algorithm to help us solve various mazes.</p>
-                    </div>
-                    <div class="col-sm-4 footer-blurb-item">
-                        <span class="glyphicon glyphicon-random"></span> 
-                        <h3>Task 3</h3>
-                        <p>Test <b>alternate maze representations</b> such as a compressed matrix or a set of nodes and edges as other possible ways to solve mazes.</p>
-                    </div>
-
-                </div>
-                <!-- /.row -->  
-            </div>
-        </div>
-        
         <div class="copyright">
             <div class="container">
                 <p>Copyright &copy;  |  Team 7, EECS 351  |  April 23, 2019</p>
