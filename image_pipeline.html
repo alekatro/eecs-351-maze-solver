@@ -108,6 +108,7 @@
                 
                 <br>
                 <p>
+                <br>
                 We found that this effectively discovered borders, however when cropping the image based on these edge-detection outputs, we found inconsistencies, where sometimes a border could get cut off if it was too small, or a white border of pixels would be left in the image. Instead of performing this edge detection, we decided to pursue a simpler route of using the maze representation to our advantage. By thresholding the image, we were performing a sort of edge detection, and there was a line at which the whitespace stopped and the maze began, so we simply detected this on all four sides and cropped the image accordingly. This resulted in the following cropped maze.
                 </p>
                 <br>
@@ -124,7 +125,6 @@
                 
             </div>
             <div class ="col-md-6">
-                <br>
                 <br>
                 <br>
                 <br>
@@ -196,6 +196,7 @@
             <div class ="col-md-6">
                 <br>
                 <br>
+                <br>
                 <h3>Part 3: Automatic Start/End Detection</h3>
             </div>
             <div class="col-lg-12">
@@ -207,7 +208,6 @@
                 <br>
                 <br>
                 <br>
-                <br>
                 <h3>Summary</h3>
             </div>
             
@@ -216,7 +216,7 @@
                 <p> We created an image pipeline that could take an input image, as seen on the left, and convert it into an output image, as seen on the right. However, for the sake of visibility in the discussion of the algorithms, we will be using the larger versions of the maze. The complexity of computations would be significantly be reduced using this approach, however.
                 </p>
                 <br>
-                
+
                 <div class="row centered">
                     <div class="col-md-6">
                         <img class="img-responsive center-block" src="pictures/maze3.jpg" alt="Original Maze">
