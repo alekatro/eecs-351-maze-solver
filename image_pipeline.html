@@ -307,7 +307,7 @@
                 <br>
                 <br>
                 <br>
-                <h3>Part 1: Image Compression</h3>
+                <h3>Part 2: Image Compression</h3>
             </div>
             <div class="col-lg-12">
                 <p> As one may notice, the image is large enough for one to comfortably see, which means that many of the borders and whitespaces span multiple pixels. When employing graph search algorithms on this maze, this would lead to many adjacent nodes which do not add any meaningful information to the solution path, and would simply increase the computational complexity of solving the shortest path. One approach at simplifying this was performing a Hough transform on the image, which detects lines, and selecting the 'n' most significant peaks in the transform, which represents the 'n' most significant lines in the image. Unfortunately, this leads to results that are seen below, where some lines are detected, others are not detected, and there are a number of duplicate lines which are slightly skewed due to the width of the border walls.
