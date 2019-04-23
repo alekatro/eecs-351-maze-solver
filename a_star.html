@@ -75,3 +75,149 @@
         <!-- /.container -->
     </nav>
     <!---------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+    <!--------------------------------------------------------------- Title Heading ---------------------------------------------------------------->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">A<sup>*</sup> Search Algorithm</h1>
+            </div>
+        </div>
+    </div>
+    <!---------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+    <!------------------------------------------------------------------ Text Section ------------------------------------------------------------------->
+    <div class="container">
+        <div class="row">
+
+            <div class ="col-md-6">
+                <h3>Introduction</h3>
+            </div>
+            <div class="col-lg-12">
+                <p>The intuition behind the A<sup>*</sup> Search Algorithm is to approximate the shortest path within a set of pixels by calculating the least cost path.  This algorithm takes the distance between the current pixel and starting pixel as one cost (<i>G</i>), and the approximate distance between the current pixel and the ending pixel as the second cost, or the "heuristic" (<i>H</i>).  Based on the costs of each pixel, this algorithm places each pixel in one of two lists throughout the program: the "closed list" that consists of all pixels whose neighbors have been searched, and the "open list" that consists of all pixels whose neighbors have yet to be searched.  
+                <br>
+                <br>
+                Although there are many ways to calculate the heuristic within an A<sup>*</sup> search, the equation we chose to use was known as the "Diagonal Distance." We chose this algorithm because it accounts for diagonal movement, which we allowed in our algorithm.  The equation is as follows:
+                <br>
+                <br>
+
+                <div class="row centered">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="heuristic.png" alt="">
+                        <p>http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html#S7</p>
+                            </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                In the above equation, the function calculates the heuristic for one <i>node</i>, or pixel. <i>node.x</i> represents the column that the current pixel sits in, while <i>goal.x</i> represents the column that the end pixel lies in. Likewise, <i>node.y</i> and <i>goal.y</i> represent the rows in which both the current pixel and the end pixel are located. The variable <i>D</i> represents the cost of moving horizontally or vertically, while the variable <i>D2</i> represents the cost of moving diagonal.  To keep things simple, we set both <i>D</i> and <i>D2</i> equal to 1, which is known as the "Chebyshev Distance."
+            </div>
+
+
+            <div class ="col-md-6">
+                <br>
+                <br>
+                <br>
+                <br>
+                <h3>Algorithm Implementation</h3>
+            </div>
+            <div class="col-lg-12">
+                <p>Our BFS algorithm was designed to work on any purely black and white images. This function was written in Matlab with java elements imported to use linked list nodes as a means of a queue-based data structure. The BFS algorithm worked by taking in 3 required inputs (start position, end position, and the maze image) and 2 optional parameters for gif generation. The start and end positions of the image were determined during pre-processing and stored in 2x1 coordinate vectors. The algorithm begins by ‘flooding’ the whitespace of the image with weighted values, starting at the start coordinate of the maze.  This flooding affect can be seen in the "GIF Generation" setion below.
+                <br>
+                <br>
+                To properly implement the BFS, pixels were individually serviced and marked with a weight, then surrounding pixels (up, down, right, and left) were added to a queue with an accumulating weight attached. This strategy for solving allows multiple paths to be serviced simultaneously if there is ever a point in the maze where paths diverge. Once there are no more pixels in the queue unvisited, or a pixel in the queue has the same coordinates as the end position, the algorithm will break and return the weighted flood of the image. From here a simple back-tracing algorithm is implemented starting at the end pixel – A path is highlighted with the lowest valued pixels touching one another until a lowest weight point is reached (this is always the start). 
+                <br>
+                <br>
+                The maze below on the left is from the original maze that we used FINISH. The maze in the middle is the line expansion FINISH. The maze on the right is the shortest path FINISH.
+                <br>
+                <br>
+                <br>
+                </p>
+
+                <div class="row">
+                    <div class ="col-md-4">
+                        <img class="img-responsive center-block" src="pictures/bfsPath1.png" alt="" height="300" width="300">
+                    </div>
+                    <div class ="col-md-4">
+                        <img class="img-responsive center-block" src="pictures/bfsLineExpansion.png" alt="" height="300" width="300">
+                    </div>
+                    <div class ="col-md-4">
+                        <img class="img-responsive center-block" src="pictures/bfsShortestPath.png" alt="" height="300" width="300">
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <p>Flood fill BFS is an effective strategy for finding the shortest path in a matrix mapped image. Although by nature its solving strategy may take a little longer than other methods, such as adjacency matrices, it is a great approach for solving non-linear mazes and always finding the shortest path possible if multiple solution paths exist.</p>
+            </div>
+
+
+            <div class ="col-md-6">
+                <br>
+                <br>
+                <br>
+                <br>
+                <h3>GIF Generation</h3>
+            </div>
+            <div class="col-lg-12">
+                <p> 
+                In order to further our investigation of the BFS algorithm and expand our knowledge, we decided to create GIFs of the how the BFS algorithm traverses a maze in order to find the solution. Once we were successful in creating a GIF using our original maze that we started with, we then tried our GIF generation on a much smaller maze, and also a maze with very thick edges.  We were successful in the creation of all of these GIFs, which can be seen below.
+                <br><br>
+                </p>
+
+                <div class="row centered">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/a_star.gif" alt="">
+                            </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-blurb">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 footer-blurb-item">
+                            <h3>Trials and Tribulations</h3>
+                            <p>While implementing the A<sup>*</sup> search algorithm, we ran into some issues along the way.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-------------------------------------------------------------------------------------------------------------------------------------------------->
+    
+    
+    
+    <!------------------------------------------------------------------ Page Footer ------------------------------------------------------------------->
+    
+    <footer>
+        <div class="copyright">
+            <div class="container">
+                <p>Copyright &copy;  |  Team 7, EECS 351  |  April 23, 2019</p>
+            </div>
+        </div>
+    </footer>
+    <!-------------------------------------------------------------------------------------------------------------------------------------------------->
+
+    
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
