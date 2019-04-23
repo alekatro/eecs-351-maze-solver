@@ -288,7 +288,7 @@
                 Next, we noticed that the maze had a lot of additional whitespace outside of the outermost walls which made no contribution to the actual solution of the maze, and would make processing it more computationally costly, so we explored ways to remove the border. Our first approach was edge detection using a Canny filter which was implemented in MATLAB, and it yielded an image that can be seen below.
                 <div class="portfolio-item">
                 <a href="#">
-                    <div class="center-box">
+                    <div class="lessons-learned">
                         <img class="img-responsive" src="pictures/Edges3.png" alt="" height="300" width="300">
                             </div>
                 </a>
@@ -296,7 +296,7 @@
                 We found that this effectively discovered borders, however when cropping the image based on these edge-detection outputs, we found inconsistencies, where sometimes a border could get cut off if it was too small, or a white border of pixels would be left in the image. Instead of performing this edge detection, we decided to pursue a simpler route of using the maze representation to our advantage. By thresholding the image, we were performing a sort of edge detection, and there was a line at which the whitespace stopped and the maze began, so we simply detected this on all four sides and cropped the image accordingly. This resulted in the following cropped maze.
                 <div class="portfolio-item">
                     <a href="#">
-                        <div class="lessons-learned center-block">
+                        <div class="lessons-learned">
                             <img class="img-responsive" src="pictures/autoCropped_maze3.png" alt="" height="300" width="300">
                                 </div>
                     </a>
@@ -328,7 +328,15 @@
                     </a>
                 </div>
                 <br><br>
-                Finally, we had the thought of convolving the image with a kernel that would 'expand' the borders to be the same size, in width of pixels, as the whitespace. Then, we thresholded the resulting output such that if there was any non-zero response, it would be set to 255. By doing this, and knowning the width of the white space, we could sample the image of the maze to obtain an image that was approximately the best possible compression. This resulted in the both the borders and the whitespace being either 1 or 2 pixels wide, depending on the sampling frequency. This was very successful at compressing the maze, and resulted in very small outputs. The upsampled image is seen below.
+                Finally, we had the thought of exploiting the well-formatted nature of these mazes. We saw that the maze walls had a fixed width/height, and these squares were extended to form lines on the maze. Thus, we wanted to use a convolution in both directions with a vector, which would illustrate where the vertical and horizontal 'gridlines' of the image were. The vertical and horizontal convolutions are seen superimposed and thresholded in the image below.
+                <div class="portfolio-item">
+                    <a href="#">
+                        <div class="lessons-learned">
+                            <img class="img-responsive" src="pictures/gridlines.png" alt="" height="300" width="300">
+                                </div>
+                    </a>
+                </div>
+                The gridlines contained the characteristic block of whitespace that was used in the maze, and the 'missing' lines are due to a lack of large wall in the area. After outputting this, we could calculate the mode of the width and height of each of these squares, and thus know the exact size of the characteristic whitespace. Then we could convolve the complement of the image with a kernel that was half the size of this whitespace in each dimension which would 'expand' the border to occupy the area where the whitespace resides. Then, we thresholded the resulting output such that if there was any non-zero response, it would be set to 255. By doing this, and knowning the width of the white space, we could sample the image of the maze to take pixels at a distance of the width of this whitespace apart to obtain an image that was approximately the best possible compression. This resulted in the both the borders and the whitespace being either 1 or 2 pixels wide, depending on the exact sampling frequency and the specific pattern at that particular location in the maze. This was very successful at compressing the maze, and resulted in very small outputs across all the sample mazes we tried. In this case, the autocropped maze dimensions, without compression, was 310x310, and the compressed version is 59x59, which is approximately 2% of the original size. The compressed image is seen below, and is upsampled for visibility. The actual compression will vary from maze to maze, depending on how large the borders and whitespace are, respectively. However, this approach should be applicable to all well-formatted mazes, in which the wall and white space size are consistent and form a rectangular 'grid' of squares. Further work could be done to get this approximation into the perfectly compressed maze using a combination of several techniques.
                 <div class="portfolio-item">
                     <a href="#">
                         <div class="lessons-learned">
