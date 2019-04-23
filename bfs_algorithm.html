@@ -125,55 +125,18 @@
                 To properly implement the BFS, pixels were individually serviced and marked with a weight, then surrounding pixels (up, down, right, and left) were added to a queue with an accumulating weight attached. This strategy for solving allows multiple paths to be serviced simultaneously if there is ever a point in the maze where paths diverge. Once there are no more pixels in the queue unvisited, or a pixel in the queue has the same coordinates as the end position, the algorithm will break and return the weighted flood of the image. From here a simple back-tracing algorithm is implemented starting at the end pixel – A path is highlighted with the lowest valued pixels touching one another until a lowest weight point is reached (this is always the start). 
                 <br>
                 <br>
-
-                <div class="row centered">
-                    <div class="col-md-3">
-                    </div>
-                    <div class="col-md-6">
+                The maze below on the left is from the original maze that we used FINISH. The maze in the middle is the line expansion FINISH. The maze on the right is the shortest pathFINISH.
+                <div class="row">
+                    <div class ="col-md-4">
                         <img class="img-responsive center-block" src="pictures/bfsPath1.png" alt="" height="300" width="300">
-                            </div>
-                    <div class="col-md-3">
                     </div>
-                </div>
-
-                <br>
-                <br>
-                Flood fill BFS is an effective strategy for finding the shortest path in a matrix mapped image. Although by nature its solving strategy may take a little longer than other methods, such as adjacency matrices, it is a great approach for solving non-linear mazes and always finding the shortest path possible if multiple solution paths exist.
-                </p>
-                <br>
-
-                <br>
-                <br>
-                BFS Line Expansion. Here is text that goes with the picture below. Here is text that goes with the picture below. Here is text that goes with the picture below.
-                </p>
-                <br>
-
-                <div class="row centered">
-                    <div class="col-md-3">
-                    </div>
-                    <div class="col-md-6">
+                    <div class ="col-md-4">
                         <img class="img-responsive center-block" src="pictures/bfsLineExpansion.png" alt="" height="300" width="300">
-                            </div>
-                    <div class="col-md-3">
                     </div>
-                </div>
-
-                <br>
-                <br>
-                BFS Shortest Path. Here is text that goes with the picture below. Here is text that goes with the picture below. Here is text that goes with the picture below.
-                </p>
-                <br>
-
-                <div class="row centered">
-                    <div class="col-md-3">
-                    </div>
-                    <div class="col-md-6">
+                    <div class ="col-md-4">
                         <img class="img-responsive center-block" src="pictures/bfsShortestPath.png" alt="" height="300" width="300">
-                            </div>
-                    <div class="col-md-3">
                     </div>
                 </div>
-
             </div>
 
 
