@@ -82,11 +82,11 @@
     
     <!--------------------------------------------------------------- Title Heading ---------------------------------------------------------------->
     <div class="container">
-        <div class="row">
-            <div class = "col=lg-12 title-image">
-                <img src="pictures/maze_background.jpg" alt="">
+        <div class="row centered">
+            <!--<div class = "col=lg-12">-->
+                <img class="img-responsive title-image" src="pictures/maze_background.jpg" alt="">
                 <div class="title-text">The Maze Solver</div>
-            </div>
+            <!--</div>-->
         </div>
         <br>
     </div>
@@ -96,23 +96,34 @@
 
 
 
-    <!-------------------------------------------------------------- Intro Paragraph --------------------------------------------------------------->
+    <!-------------------------------------------------------------- Intro Paragraph --------------------------------------------------------------- >
     <div class="container">
         <div class="black-box">
-                <p>The goal of this project is to <b>allow users to take a picture of a 2-dimensional maze and utilize our program to solve it.</b>  Our "maze solver" application performs edge/line detection on a picture of a maze, uses an algorithm to find the critical path for the maze, and returns a completed picture of the maze and its critical path.  Our webpage explains our "maze solver" in greater detail and introduces the effects of various algorithms on the process of solving mazes with our program.</p>
+                <p>The goal of this project is to <b>allow users to take a picture of a 2-dimensional maze and utilize our program to solve it.</b>  Our "maze solver" application automatically crops a picture of a maze to the region of interest, compresses the maze as much as possible, then uses an algorithm to find the critical path for the maze. As the maze is being solved, we can create a GIF to see how the algorithm searches for a shortest path, and return a picture of the maze with the path superimposed. Our webpage explains our "maze solver" in greater detail and introduces the effects of various algorithms on the process of solving mazes with our program.</p>
         </div>
         <div class="col-lg-12">
         </div>
     </div>
-    <!---------------------------------------------------------------------------------------------------------------------------------------------->
+    < !---------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <!-------------------------------------------------------------- Intro Paragraph --------------------------------------------------------------->
+     <div class="container">
+     
+     <p>The goal of this project is to <b>allow users to take a picture of a 2-dimensional maze and utilize our program to solve it.</b>  Our "maze solver" application automatically crops a picture of a maze to the region of interest, compresses the maze as much as possible, then uses an algorithm to find the critical path for the maze. As the maze is being solved, we can create a GIF to see how the algorithm searches for a shortest path, and return a picture of the maze with the path superimposed. Our webpage explains our "maze solver" in greater detail and introduces the effects of various algorithms on the process of solving mazes with our program.</p>
+     <div class="black-box">
+         <p> One can find all the code for this project and a sample script at alekatro.github.io </p>
+     </div>
+     <div class="col-lg-12">
+     </div>
+     </div>
+     <!---------------------------------------------------------------------------------------------------------------------------------------------->
 
 
 
 
-
-    <!----------------------------------------------------------------- Pictures ------------------------------------------------------------------->
+    <!----------------------------------------------------------------- Pictures ------------------------------------------------------------------- >
     <div class="container">
-        <!-- Row 1 -->
+        <!-- Row 1 -- >
         <div class="row">
             <div class ="col-md-4">
                 <br>
@@ -157,9 +168,9 @@
                 <br>
             </div>
         </div>
-        <!-- /Row 1 -->
+        <!-- /Row 1 -- >
 
-        <!-- Row 2 -->
+        <!-- Row 2 -- >
         <div class="row">
             <div class ="col-md-4">
                 <h3><u>Edges of Mazes</u></h3>
@@ -196,9 +207,9 @@
                 <br>
             </div>
         </div>
-        <!-- /Row 2 -->
+        <!-- /Row 2 -- >
 
-        <!-- Row 3 -->
+        <!-- Row 3 -- >
         <div class="row">
             <div class ="col-md-4">
                 <h3><u>Autocropped Mazes</u></h3>
@@ -235,7 +246,7 @@
                 <br>
                 <br>
             </div>
-            <!-- /Row 3 -->
+            <!-- /Row 3 -- >
         </div>
     </div>
     <!---------------------------------------------------------------------------------------------------------------------------------------------->

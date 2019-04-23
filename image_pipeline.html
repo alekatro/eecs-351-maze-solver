@@ -93,7 +93,7 @@
                 <h3>Part 1: Image Preparation</h3>
             </div>
             <div class="col-lg-12">
-                <p> To solver our mazes, we must first create a representation from the original maze image. We do this by loading an image into MATLAB, and performing a thresholding filter operation. This is applied since many mazes are not saved as lossless PNG photos with clear delineations between the black walls and the white passageways. This allows us to perform later operations on a cleaned image which results in better output later on. These operations are performed in readProcessImage.m and thresholdImage.m. We found that a good heuristic for the threshold cutoff is approximately a pixel value of 100, which sets all pixels lower than that to 0, and all greater or equal to that to 255, the maximum value.
+                <p> To solver our mazes, we must first create a representation from the original maze image. We do this by loading an image into MATLAB, and performing a thresholding filter operation. This is applied since many mazes are not saved as lossless PNG photos with clear delineations between the black walls and the white passageways. This allows us to perform later operations on a cleaned image which results in better output later on. These operations are performed in readProcessImage.m and thresholdImage.m. We found that a good heuristic for the threshold cutoff is approximately a pixel value of 90, which sets all pixels lower than that to 0, and all greater or equal to that to 255, the maximum value.
                 <br><br>
                 Next, we noticed that the maze had a lot of additional whitespace outside of the outermost walls which made no contribution to the actual solution of the maze, and would make processing it more computationally costly, so we explored ways to remove the border. Our first approach was edge detection using a Canny filter which was implemented in MATLAB, and it yielded an image that can be seen below. The left image is the input, while the right contains the detected edges.
                 </p>
@@ -177,7 +177,7 @@
                         <img class="img-responsive center-block" src="pictures/maxCompression.png" alt="">
                     </div>
                     <div class="col-md-6">
-                        <img class="img-responsive center-block" src="pictures/maxCompression_upsampled.png" alt="">
+                        <img class="img-responsive center-block" src="pictures/maxCompression_upsampled.png" alt="" width="300">
                     </div>
                 </div>
                 
@@ -209,7 +209,7 @@
                         <img class="img-responsive center-block" src="pictures/maze3.jpg" alt="Original Maze">
                     </div>
                     <div class="col-md-6">
-                        <img class="img-responsive center-block" src="pictures/maxCompression_upsampled.png" alt="Compressed Maze">
+                        <img class="img-responsive center-block" src="pictures/maxCompression_upsampled.png" alt="Compressed Maze" width="300">
                     </div>
                 </div>
             </div>
