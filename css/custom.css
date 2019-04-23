@@ -109,3 +109,9 @@ p {
 	text-align: center;
 	padding: 30px 0;
 }
+
+.row.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
