@@ -106,45 +106,53 @@
                 </p>
                 <br>
                 <br>
-                <div class="portfolio-item">
-                    <a href="#">
-                        <div class="lessons-learned">
-                            <img class="img-responsive" src="pictures/original_cleaned_image.png" alt="" height="700" width="700">
-                        </div>
-                    </a>
+                <div class="row centered">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/original_cleaned_image.png" alt="" height="300" width="300">
+                            </div>
+                    <div class="col-md-3">
+                    </div>
                 </div>
                 <br>
                 <p>Now that the image cleaned, we can perform our first watershed transformation. This generates a matrix of 0’s (whitespace), 1’s (basin 1), and 2’s (basin 2) that highlights the continuous solution area of the maze. Masking this with the original image indicates the solution area and the dead-end area (blacked out). 
                 <br>
                 <br>
-                <div class="portfolio-item">
-                    <a href="#">
-                        <div class="lessons-learned">
-                            <img class="img-responsive" src="pictures/watershed1.png" alt="" height="700" width="700">
-                        </div>
-                    </a>
+                <div class="row centered">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/watershed1.png" alt="" height="300" width="300">
+                            </div>
+                    <div class="col-md-3">
+                    </div>
                 </div>
                 <br>
                 <p>Taking one final watershed of the masked image will return another basin matrix with a refined solution segment. By performing an imshowpair in matlab with the first watershed and the final watershed highlights the solution path of the maze.
                 <br>
                 <br>
-                <div class="col-lg-12 portfolio-item">
-                    <a href="#">
-                        <div class="lessons-learned">
-                            <img class="img-responsive" src="pictures/watershed2.png" alt="">
-                        </div>
-                    </a>
+                <div class="row centered">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/watershed2.png" alt="" height="300" width="300">
+                            </div>
+                    <div class="col-md-3">
+                    </div>
                 </div>
                 <br>
                 <p>We can isolate this solution by simply subtracting the watershed 1 basin from the refined basin. Overlaying this path back on our original image reveals a solution to the maze.
                 <br>
                 <br>
-                <div class="portfolio-item">
-                    <a href="#">
-                        <div class="lessons-learned">
-                            <img class="img-responsive" src="pictures/watershed3.png" alt="">
-                        </div>
-                    </a>
+                <div class="row centered">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/watershed3.png" alt="" height="300" width="300">
+                            </div>
+                    <div class="col-md-3">
+                    </div>
                 </div>
                 <br>
                 <p>Watershed is an effective and fast method for finding a solution to a filtered maze, but doesn’t come without limitations. For one, watershed may not always find the optimal solution if there are multiple ways to solve a maze. It would instead indicate the most traversed path to reach the maze exit. We will explore additional solutions to this problem by implementing several ways to solve a maze. Our next step is to incorporate a flood-fill BFS algorithm to find the shortest path solution. Over the next week we will develop and integrate this solution on a series of mazes and try to extend its functionality to non-linear mazes.
@@ -164,17 +172,6 @@
     
     <!------------------------------------------------------------------ Page Footer ------------------------------------------------------------------->
     <footer>
-        <div class="footer-blurb">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 footer-blurb-item">
-                        <h3>Trials and Tribulations</h3>
-                        <p>While implementing the A<sup>*</sup> search algorithm, we ran into an issue that we wanted to mention.  As Matlab in itself does not support any sort of "list" data type, which are definitely needed in the implementation of this algorithm, we decided to represent our closed and open lists as structs instead (which are supported by Matlab).  While we were able to get this method to work with the A<sup>*</sup> algorithm, the program ran very slowly on our computers and had to do much more computation than actually necessary. Later, we learned that we can import lists from an external java library, which would probably speed up our algorithm substantially. While we were not able to rewrite our A<sup>*</sup> algorithm with the incorporation of these lists, we believe that this would be an important step to take in the future. Despite our runtime being quite large for this algorithm, we are impressed by the results we were able to obtain.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="copyright">
             <div class="container">
                 <br>
