@@ -14,7 +14,7 @@ p {
 
 .title-text {
   text-align: center;
-  top: 50%;
+  top: 25%;
   left: 50%;
   position: absolute;
   transform: translate(-50%, -50%);
