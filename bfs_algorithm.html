@@ -95,6 +95,7 @@
     <!------------------------------------------------------------------ Text Section ------------------------------------------------------------------->
     <div class="container">
         <div class="row">
+
             <div class ="col-md-6">
                 <h3>Introduction</h3>
             </div>
@@ -109,6 +110,8 @@
                     <img class="img-responsive center-block" src="pictures/bfs2.png" alt="BFS 2">
                 </div>  
             </div>
+
+
             <div class ="col-md-6">
                 <br>
                 <br>
@@ -117,11 +120,13 @@
                 <h3>Algorithm Implementation</h3>
             </div>
             <div class="col-lg-12">
-                <p>Our BFS algorithm was designed to work on any purely black and white images. This function was written in Matlab with java elements imported to use linked list nodes as a means of a queue-based data structure. The BFS algorithm worked by taking in 3 required inputs (start position, end position, and the maze image) and 2 optional parameters for gif generation. The start and end positions of the image were determined during pre-processing and stored in 2x1 coordinate vectors. 
-                <br><br>
-                The algorithm begins by ‘flooding’ the whitespace of the image with weighted values, starting at the start coordinate of the maze. To properly implement the BFS, pixels were individually serviced and marked with a weight, then surrounding pixels (up, down, right, and left) were added to a queue with an accumulating weight attached. This strategy for solving allows multiple paths to be serviced simultaneously if there is ever a point in the maze where paths diverge. Once there are no more pixels in the queue unvisited, or a pixel in the queue has the same coordinates as the end position, the algorithm will break and return the weighted flood of the image. From here a simple back-tracing algorithm is implemented starting at the end pixel – A path is highlighted with the lowest valued pixels touching one another until a lowest weight point is reached (this is always the start). Flood fill BFS is an effective strategy for finding the shortest path in a matrix mapped image. Although by nature its solving strategy may take a little longer than other methods, such as adjacency matrices, it is a great approach for solving non-linear mazes and always finding the shortest path possible if multiple solution paths exist.
-                </p>
+                <p>Our BFS algorithm was designed to work on any purely black and white images. This function was written in Matlab with java elements imported to use linked list nodes as a means of a queue-based data structure. The BFS algorithm worked by taking in 3 required inputs (start position, end position, and the maze image) and 2 optional parameters for gif generation. The start and end positions of the image were determined during pre-processing and stored in 2x1 coordinate vectors. The algorithm begins by ‘flooding’ the whitespace of the image with weighted values, starting at the start coordinate of the maze.  This flooding affect can be seen in the "GIF Generation" setion below.
                 <br>
+                <br>
+                To properly implement the BFS, pixels were individually serviced and marked with a weight, then surrounding pixels (up, down, right, and left) were added to a queue with an accumulating weight attached. This strategy for solving allows multiple paths to be serviced simultaneously if there is ever a point in the maze where paths diverge. Once there are no more pixels in the queue unvisited, or a pixel in the queue has the same coordinates as the end position, the algorithm will break and return the weighted flood of the image. From here a simple back-tracing algorithm is implemented starting at the end pixel – A path is highlighted with the lowest valued pixels touching one another until a lowest weight point is reached (this is always the start). 
+                <br>
+                <br>
+
                 <div class="row centered">
                     <div class="col-md-3">
                     </div>
@@ -131,56 +136,57 @@
                     <div class="col-md-3">
                     </div>
                 </div>
-                
-                <p>
-                Alternatively, we though of using convolution to 'expand' the borders and thereby thin out the white passageways. This worked reasonably well, and could be perormed with a kernel that was proportional to the size of the passageways in order to make sure that no information would be lost. An example of this output is shown below. However, this still left a relatively large number of non-necessary nodes to check in a search algorithm, so a better solution was still desired.
+
+                <br>
+                <br>
+                Flood fill BFS is an effective strategy for finding the shortest path in a matrix mapped image. Although by nature its solving strategy may take a little longer than other methods, such as adjacency matrices, it is a great approach for solving non-linear mazes and always finding the shortest path possible if multiple solution paths exist.
                 </p>
-                
+                <br>
+
+                <br>
+                <br>
+                BFS Line Expansion. Here is text that goes with the picture below. Here is text that goes with the picture below. Here is text that goes with the picture below.
+                </p>
+                <br>
+
                 <div class="row centered">
                     <div class="col-md-3">
                     </div>
                     <div class="col-md-6">
-                        <img class="img-responsive center-block" src="pictures/thickMaze.png" alt="">
+                        <img class="img-responsive center-block" src="pictures/bfsLineExpansion.png" alt="" height="300" width="300">
                             </div>
                     <div class="col-md-3">
                     </div>
                 </div>
-                
-                <p>
-                <br><br>
-                Finally, we had the thought of exploiting the well-formatted nature of these mazes. We saw that the maze walls had a fixed width/height, and these squares were extended to form lines on the maze. Thus, we wanted to use a convolution in both directions with a vector, which would illustrate where the vertical and horizontal 'gridlines' of the image were. The vertical and horizontal convolutions are seen superimposed and thresholded in the image below.
+
+                <br>
+                <br>
+                BFS Shortest Path. Here is text that goes with the picture below. Here is text that goes with the picture below. Here is text that goes with the picture below.
                 </p>
+                <br>
+
                 <div class="row centered">
                     <div class="col-md-3">
                     </div>
                     <div class="col-md-6">
-                        <img class="img-responsive center-block" src="pictures/gridlines.png" alt="">
+                        <img class="img-responsive center-block" src="pictures/bfsShortestPath.png" alt="" height="300" width="300">
                             </div>
                     <div class="col-md-3">
                     </div>
                 </div>
-                
-                <p>
-                The gridlines contained the characteristic block of whitespace that was used in the maze, and the 'missing' lines are due to a lack of large wall in the area. After outputting this, we could calculate the mode of the width and height of each of these squares, and thus know the exact size of the characteristic whitespace. Then we could convolve the complement of the image with a kernel that was half the size of this whitespace in each dimension which would 'expand' the border to occupy the area where the whitespace resides. Then, we thresholded the resulting output such that if there was any non-zero response, it would be set to 255. By doing this, and knowning the width of the white space, we could sample the image of the maze to take pixels at a distance of the width of this whitespace apart to obtain an image that was approximately the best possible compression. This resulted in the both the borders and the whitespace being either 1 or 2 pixels wide, depending on the exact sampling frequency and the specific pattern at that particular location in the maze. This was very successful at compressing the maze, and resulted in very small outputs across all the sample mazes we tried. In this case, the autocropped maze dimensions, without compression, was 310x310, and the compressed version is 59x59, which is approximately 4% of the original size. The compressed image is seen below, and is upsampled for visibility. The actual compression will vary from maze to maze, depending on how large the borders and whitespace are, respectively. However, this approach should be applicable to all well-formatted mazes, in which the wall and white space size are consistent and form a rectangular 'grid' of squares. Further work could be done to get this approximation into the perfectly compressed maze using a combination of several techniques.
-                </p>
-                
-                <div class="row centered">
-                    <div class="col-md-6">
-                        <img class="img-responsive center-block" src="pictures/maxCompression.png" alt="">
-                    </div>
-                    <div class="col-md-6">
-                        <img class="img-responsive center-block" src="pictures/maxCompression_upsampled.png" alt="" width="300">
-                    </div>
-                </div>
-                
+
             </div>
+
+
             <div class ="col-md-6">
+                <br>
                 <br>
                 <br>
                 <h3>GIF Generation</h3>
             </div>
             <div class="col-lg-12">
-                <p> Now with a minimal representation of the maze, we can automate our processing by detecting the start and stop of the maze. We can take advantage of the fact that the outside of the image will always be black borders, apart from the start and stop of the maze. Thus, we can simply search for the start and stop, which can be the starting point for our search algorithms to solve the maze.
+                <p> 
+                BFS Original GIF. Here is text that goes with the picture below. Here is text that goes with the picture below. Here is text that goes with the picture below.
                 <br><br>
                 </p>
 
@@ -188,33 +194,45 @@
                     <div class="col-md-3">
                     </div>
                     <div class="col-md-6">
-                        <img class="img-responsive center-block" src="pictures/bfsAnimatedCropped.gif" alt="" height="300" width="300">
+                        <img class="img-responsive center-block" src="pictures/original.gif" alt="" height="300" width="300">
                             </div>
                     <div class="col-md-3">
                     </div>
                 </div>
-            </div>
-            <div class ="col-md-6">
+
                 <br>
                 <br>
-                <br>
-                <br>
-                <h3>Summary</h3>
-            </div>
-            
-            <div class="col-lg-12">
-                <!--<div class="col-lg-12">-->
-                <p> We created an image pipeline that could take an input image, as seen on the left, and convert it into an output image, as seen on the right. However, for the sake of visibility in the discussion of the algorithms, we will be using the larger versions of the maze. The complexity of computations would be significantly be reduced using this approach, however.
+                <p> 
+                BFS Small Maze GIF. Here is text that goes with the picture below. Here is text that goes with the picture below. Here is text that goes with the picture below.
+                <br><br>
                 </p>
+
                 <div class="row centered">
-                    <div class="col-md-6">
-                        <img class="img-responsive center-block" src="pictures/maze3.jpg" alt="Original Maze">
+                    <div class="col-md-3">
                     </div>
                     <div class="col-md-6">
-                        <img class="img-responsive center-block" src="pictures/maxCompression_upsampled.png" alt="Compressed Maze" width="300">
+                        <img class="img-responsive center-block" src="pictures/smallMaze.gif" alt="" height="300" width="300">
+                            </div>
+                    <div class="col-md-3">
                     </div>
                 </div>
-            </div>
+
+                <br>
+                <br>
+                <p> 
+                BFS Thick GIF. Here is text that goes with the picture below. Here is text that goes with the picture below. Here is text that goes with the picture below.
+                <br><br>
+                </p>
+
+                <div class="row centered">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive center-block" src="pictures/thick.gif" alt="" height="300" width="300">
+                            </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
         </div>
     </div>
     <!-------------------------------------------------------------------------------------------------------------------------------------------------->
