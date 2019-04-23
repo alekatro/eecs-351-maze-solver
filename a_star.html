@@ -128,13 +128,10 @@
                 <h3>Algorithm Implementation</h3>
             </div>
             <div class="col-lg-12">
-                <p>Our BFS algorithm was designed to work on any purely black and white images. This function was written in Matlab with java elements imported to use linked list nodes as a means of a queue-based data structure. The BFS algorithm worked by taking in 3 required inputs (start position, end position, and the maze image) and 2 optional parameters for gif generation. The start and end positions of the image were determined during pre-processing and stored in 2x1 coordinate vectors. The algorithm begins by ‘flooding’ the whitespace of the image with weighted values, starting at the start coordinate of the maze.  This flooding affect can be seen in the "GIF Generation" setion below.
+                <p>Alike our BFS algorithm, our A<sup>*</sup> search was designed to work on any purely black and white images. This function was written in Matlab using structs to represent each pixel and matrices to represent both the closed and open lists. The A<sup>*</sup> algorithm worked by taking in 3 required inputs (start position, end position, and the maze image) and 2 optional parameters for gif generation. The start and end positions of the image were determined during pre-processing and stored in 2x1 coordinate vectors. The algorithm begins by starting at the beginning pixel and moving on based on the costs of the available neighbors to the starting pixel and subsequent current pixels.
                 <br>
                 <br>
-                To properly implement the BFS, pixels were individually serviced and marked with a weight, then surrounding pixels (up, down, right, and left) were added to a queue with an accumulating weight attached. This strategy for solving allows multiple paths to be serviced simultaneously if there is ever a point in the maze where paths diverge. Once there are no more pixels in the queue unvisited, or a pixel in the queue has the same coordinates as the end position, the algorithm will break and return the weighted flood of the image. From here a simple back-tracing algorithm is implemented starting at the end pixel – A path is highlighted with the lowest valued pixels touching one another until a lowest weight point is reached (this is always the start). 
-                <br>
-                <br>
-                The maze below on the left is from the original maze that we used FINISH. The maze in the middle is the line expansion FINISH. The maze on the right is the shortest path FINISH.
+                To properly implement the A<sup>*</sup> search algorithm, the cost of each pixel that was a neighbor to a current pixel was individually calculated and put in the open list if it's <i>F</i> value was the least of all pixels in the open list.  The surrounding pixels (north, northeast, east, southeast, south, southwest, west, and northwest) were then added to the open list with an accumulating cost attached if they were not in the closed list and were not an edge. As soon as the current pixel's neighbors were all checked, the current pixel was placed into the closed list and the algorithm repeated.  This strategy for solving allowed multiple paths to be calculated simultaneously if there was ever a point in the maze where paths diverge. Once the ending pixel was found (the current pixel = end pixel) the algorithm would end and return the weighted flood of the image. From there a simple back-tracing algorithm was implemented starting at the end pixel and going backwards based on the parent of each pixel. A path was then highlighted with the approximate lowest valued pixels touching one another until the starting pixel was reached. An example of what this algorithm looks like when run on a generic maze can be seen below. 
                 <br>
                 <br>
                 <br>
@@ -152,7 +149,7 @@
 
                 <br>
                 <br>
-                <p>Flood fill BFS is an effective strategy for finding the shortest path in a matrix mapped image. Although by nature its solving strategy may take a little longer than other methods, such as adjacency matrices, it is a great approach for solving non-linear mazes and always finding the shortest path possible if multiple solution paths exist.</p>
+                <p>While the A<sup>*</sup> search algorithm does not guarantee that it will find the shortest path in a maze, our algorithm is advantageous because it approximates a shortest path, so having a compressed maze wouldn't be absolutely necessary. A compressed maze would be helpful for runtime, but A<sup>*</sup> is designed to avoid this.</p>
             </div>
 
             <div class ="col-md-6">
@@ -203,6 +200,10 @@
 
         <div class="copyright">
             <div class="container">
+                <br>
+                <br>
+                <br>
+                <br>
                 <p>Copyright &copy;  |  Team 7, EECS 351  |  April 23, 2019</p>
             </div>
         </div>
