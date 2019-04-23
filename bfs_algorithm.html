@@ -103,26 +103,11 @@
                 </p>
                 
                 <div class="col-md-6">
-                    <img class="img-responsive center-block" src="pictures/maze3.jpg" alt="Original Maze">
+                    <img class="img-responsive center-block" src="pictures/bfs1.png" alt="BFS 1">
                 </div>
                 <div class="col-md-6">
-                    <img class="img-responsive center-block" src="pictures/Edges3.png" alt="Compressed Maze">
-                </div>
-                
-                <p>
-                We found that this effectively discovered borders, however when cropping the image based on these edge-detection outputs, we found inconsistencies, where sometimes a border could get cut off if it was too small, or a white border of pixels would be left in the image. Instead of performing this edge detection, we decided to pursue a simpler route of using the maze representation to our advantage. By thresholding the image, we were performing a sort of edge detection, and there was a line at which the whitespace stopped and the maze began, so we simply detected this on all four sides and cropped the image accordingly. This resulted in the following cropped maze.
-                </p>
-                
-                <div class="row centered">
-                    <div class="col-md-3">
-                    </div>
-                    <div class="col-md-6">
-                        <img class="img-responsive center-block" src="pictures/autoCropped_maze3.png" alt="">
-                    </div>
-                    <div class="col-md-3">
-                    </div>
-                </div>
-                
+                    <img class="img-responsive center-block" src="pictures/bfs2.png" alt="BFS 2">
+                </div>  
             </div>
             <div class ="col-md-6">
                 <br>
@@ -140,7 +125,7 @@
                     <div class="col-md-3">
                     </div>
                     <div class="col-md-6">
-                        <img class="img-responsive center-block" src="pictures/HoughTransform.png" alt="" height="300" width="300">
+                        <img class="img-responsive center-block" src="pictures/bfsAnimated.gif" alt="" height="300" width="300">
                             </div>
                     <div class="col-md-3">
                     </div>
@@ -191,7 +176,7 @@
             <div class ="col-md-6">
                 <br>
                 <br>
-                <h3>Part 3: Automatic Start/End Detection</h3>
+                <h3>GIF Generation</h3>
             </div>
             <div class="col-lg-12">
                 <p> Now with a minimal representation of the maze, we can automate our processing by detecting the start and stop of the maze. We can take advantage of the fact that the outside of the image will always be black borders, apart from the start and stop of the maze. Thus, we can simply search for the start and stop, which can be the starting point for our search algorithms to solve the maze.
