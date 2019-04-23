@@ -96,7 +96,6 @@
                 <p> To solve our mazes, we must first create a representation from the original maze image. We do this by loading an image into MATLAB, and performing a thresholding filter operation. This is applied since many mazes are not saved as lossless PNG photos with clear delineations between the black walls and the white passageways. This allows us to perform later operations on a cleaned image which results in better output later on. These operations are performed in readProcessImage.m and thresholdImage.m. We found that a good heuristic for the threshold cutoff is approximately a pixel value of 90, which sets all pixels lower than that to 0, and all greater or equal to that to 255, the maximum value.
                 <br><br>
                 Next, we noticed that the maze had a lot of additional whitespace outside of the outermost walls which made no contribution to the actual solution of the maze, and would make processing it more computationally costly, so we explored ways to remove the border. Our first approach was edge detection using a Canny filter which was implemented in MATLAB, and it yielded an image that can be seen below. The left image is the input, while the right contains the detected edges.
-                </p>
                 <br>
                 
                 <div class="col-md-6">
@@ -107,11 +106,8 @@
                 </div>
                 
                 <br>
-                <p>
-                <br>
                 <br>
                 We found that this effectively discovered borders, however when cropping the image based on these edge-detection outputs, we found inconsistencies, where sometimes a border could get cut off if it was too small, or a white border of pixels would be left in the image. Instead of performing this edge detection, we decided to pursue a simpler route of using the maze representation to our advantage. By thresholding the image, we were performing a sort of edge detection, and there was a line at which the whitespace stopped and the maze began, so we simply detected this on all four sides and cropped the image accordingly. This resulted in the following cropped maze.
-                </p>
                 <br>
                 
                 <div class="row centered">
@@ -123,7 +119,7 @@
                     <div class="col-md-3">
                     </div>
                 </div>
-                
+                </p>
             </div>
             <div class ="col-md-6">
                 <br>
