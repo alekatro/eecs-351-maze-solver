@@ -59,6 +59,11 @@ p {
     border-radius: 15px;
 }
 
+center-box {
+    margin: 0 auto;
+    float: none;
+}
+
 .black-box {
     width: 300px;
     background-color: #333333;
