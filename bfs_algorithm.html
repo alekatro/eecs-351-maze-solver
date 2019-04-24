@@ -125,7 +125,7 @@
                 To properly implement the BFS, pixels were individually serviced and marked with a weight, then surrounding pixels (up, down, right, and left) were added to a queue with an accumulating weight attached. This strategy for solving allows multiple paths to be serviced simultaneously if there is ever a point in the maze where paths diverge. Once there are no more pixels in the queue unvisited, or a pixel in the queue has the same coordinates as the end position, the algorithm will break and return the weighted flood of the image. From here a simple back-tracing algorithm is implemented starting at the end pixel – A path is highlighted with the lowest valued pixels touching one another until a lowest weight point is reached (this is always the start). 
                 <br>
                 <br>
-                The maze below on the left is from the original maze that we used FINISH. The maze in the middle is the line expansion FINISH. The maze on the right is the shortest path FINISH.
+                The solution path generated directly on the original image (left) is still the shortest path but is always hugging the wall making it hard for the user to trace back. Backtracking ended up taking the most amount of time on the original image because weights were larger due to more traversed pixels. The thickened solution path (middle) is overlaid on the original image, causing the solution path to be centered between whitespace making it much easier to see. Backtracking was computed in a moderate amount of time due to lower weights overall. The simplified and compressed solution path (right) only passes through whitespace of 1-2 pixels, in turn creating an easy to follow solution path that was backtracked very quickly.
                 <br>
                 <br>
                 <br>
@@ -182,16 +182,15 @@
                 <div class="row">
                     <div class ="col-md-4">
                         <h3>Original Maze</h3>
-                        <p> BFS Original GIF. Here is text that goes with the picture below. Here is text that goes with the picture below. Here is text that goes with the picture below.</p>
+                        <p>Flood fill BFS takes the longest amount of time on the original image, spreading across all whitespace until the end is reached.</p>
                     </div>
                     <div class ="col-md-4">
-                        <h3>Smaller Maze</h3>
-                        <p> BFS Smaller Maze GIF. Here is text that goes with the picture below. Here is text that goes with the picture below. Here is text that goes with the picture below.</p>
+                        <h3>Shrunken Maze</h3>
+                        <p>Flood fill BFS takes the shortest amount of time on the sampled maze. This is due to the fact that whitespace between lines are only 1-2 pixels so it is able to cover and service the area much faster.</p>
                     </div>
                     <div class ="col-md-4">
-                        <h3>Maze with Thick Edges</h3>
-                        <p> BFS Thick GIF. Here is text that goes with the picture below. Here is text that goes with the picture below. Here is text that goes with the picture below. </p>
-                        
+                        <h3>Thickened Maze</h3>
+                        <p>Flood fill BFS takes a much shorter amount of time on the thickened maze compared to the original due to the reduced white space caused by line thickening.</p>
                     </div>
                 </div>
             </div>
