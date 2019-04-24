@@ -124,7 +124,6 @@
                 <br>
                 <p>Now that the image has been cleaned, we can perform our first watershed transformation. This generates a matrix of 0’s (whitespace), 1’s (basin 1), and 2’s (basin 2) that highlights the continuous solution area of the maze. Masking this with the original image indicates the solution area and the dead-end area (blacked out).</p>
                 <br>
-                <br>
                 <div class="row centered">
                     <div class="col-md-3">
                     </div>
@@ -134,10 +133,7 @@
                     <div class="col-md-3">
                     </div>
                 </div>
-                <br>
                 <p>Taking one final watershed of the masked image returns another basin matrix with a refined solution segment. By performing an <i>imshowpair</i> in Matlab on the first watershed and the final watershed, we now have a highlighted solution path for the maze.</p>
-                <br>
-                <br>
                 <div class="row centered">
                     <div class="col-md-3">
                     </div>
